@@ -1,8 +1,17 @@
 /**
 Script © 2022 Boris Boguslavsky
 https://github.com/borisboguslavsky
+
 Based on the Random Selection Functionality from the Randomill Illustrator Plugin
 https://randomill.com/
+
+Please note:
+
+It may take some time to run the script on large sets of objects. This is because of the fact that the core of this script works by flipping the `.selected` flag of objects within Illustrator via ExtendScript. This necessarily means that Illustrator redraws the whole screen every time a single object has its `.selected` flag modified. It's an unfortunate limitation of how Adobe has implemented this particular feature within ExtendScript. 
+
+This script is a stripped-down version of Randomill's (https://randomill.com/) random select function.
+
+The main difference between the two is that the full version of this function within Randomill has an 'experimental' fast-select mode that circumvents the above speed limitation by creating an executing an action dynamically instead of iterating over objects and flipping their `.selected` flags. This means that random selection can happen almost instantaneously, regardless of how large the initial set of objects is.
 
 Feel free to modify this script as you see fit. I hope you find it useful.
 */
