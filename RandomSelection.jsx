@@ -198,5 +198,6 @@ function randomizedIndexListFischerYates(length) {
 	return shuffleArray(randomizedArray);
 }
 
+// Show script UI when script is run
 mainPanelWindow.center();
 mainPanelWindow.show();
