@@ -4,9 +4,27 @@ A collection of scripts for Adobe Illustrator. Free to use, modify, and redistri
 
 # Scripts
 
+## RandomLayerOrder.jsx
+
+![](images/RandomLayerOrder.png)
+
+This script can be used to randomize the layer order of all selected objects, with or without respect to parent layers.
+
+### Notable features:
+
+* Randomize layer order without relying on `ZOrderMethod` commands. This script works by swapping two layers in a randomized manner.
+* Optionally respect parent layers. With this option enabled, layers will stay within their own parent layers and will only be randomized relative to other selected layers in their same parent layer.
+
+### How to use:
+
+1. Select all objects whose layer order you want to randomize.
+2. Open the script. This can be done in Illustrator's menu (File > Scripts > Other Script).
+3. Check whether or not you want parent layers to be respected.
+4. Click 'OK'
+
 ## RandomSelection.jsx
 
-![](images/RandomSelection_Thumbnail.png)
+![](images/RandomSelection.png)
 
 This script can be used to randomly select a percentage or specific number of objects from within the current selection. There have been many random selection scripts for Adobe Illustrator before, but this one has a couple of features that some others are missing.
 
