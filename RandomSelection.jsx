@@ -69,7 +69,7 @@ var cancelAndOkButtons = mainPanelWindow.add('group');
 // ##     ## ##     ##  ##  ##   ###
 // ##     ## ##     ## #### ##    ##
 function randomizeSelection() {
-	// Error Checks
+	// Ensure there's an active document
 	if (app.documents.length === 0) {
 		alert("Error: No currently active document.");
 		mainPanelWindow.close();
@@ -78,13 +78,11 @@ function randomizeSelection() {
 
 	var objects = app.activeDocument.selection;
 
+	// Ensure there's at least two objects in the selection
 	if (objects.length < 2) {
 		alert("Error: Please select at least two items. If more than two items are selected, make sure they're ungrouped.");
-		mainPanelWindow.close();
 		return;
 	}
-
-	// alert("Select by Percentage: " + selMethodPercentageRadio.value.toString() + "\nSelect by Count: " + selMethodCountRadio.value.toString() + "\nEntered Value: " + selectionValue.text);
 
 	// Establish the selection method
 	var selectionMethod = selMethodPercentageRadio.value ? 'percentage' : 'count';
@@ -93,29 +91,32 @@ function randomizeSelection() {
 	var value = parseFloat(selectionValue.text)
 	if (isNaN(value)) {
 		alert('Error: Could not parse entered value.');
-		mainPanelWindow.close();
 		return;
 	}
 
 	// Determine the number of objects that should end up selected
 	var numberOfObjectsInFinalSelection = calculateNumberOfObjectsToSelect(objects.length, selectionMethod, value);
+
 	// If the number of objects calculated ends up being zero, deslect everything
 	if (numberOfObjectsInFinalSelection <= 0) { 
 		app.activeDocument.selection = [];
-		mainPanelWindow.close();
 		return;
 	}
+
+	// If the number of objects to select is somehow greater than the selection length, just return
 	if (numberOfObjectsInFinalSelection >= objects.length) {
-		mainPanelWindow.close();
 		return;
 	}
-	// Determine whether the most efficient way is to select objects from an empty array,
+
+	// Determine whether the most efficient way is to select objects starting from an empty array,
 	// or to deslect objects from the currently selected object array
 	var whatToDo = selectOrDeselect(objects.length, numberOfObjectsInFinalSelection);
 	var deselect = whatToDo.deselect;
+	
 	// How many objects must be either selected or deselected?
 	var howManyTimes = whatToDo.number;
-	// Create a randomized array of Indexes with the length of the selection
+
+	// Create a randomized array of indices with the length of the current selection
 	var selectionIndexList = randomizedIndexListFischerYates(objects.length);
 	
 	// If selecting instead of deselecting, start with an empty array
