@@ -1,6 +1,11 @@
 # Overview
 
-A collection of scripts for Adobe Illustrator. Free to use, modify, and redistribute. Initially, there is just the `RandomSelect.jsx` script, with potentially more to come in the future.
+A collection of scripts for Adobe Illustrator. Free to use, modify, and redistribute. Hopefully more and more scripts will be added with time.
+
+|Script|Description
+|:---|:---|
+|[RandomLayerOrder.jsx](#randomlayerorderjsx)|Randomize the layer order of all selected objects|
+|[RandomSelection.jsx](#randomselectionjsx)|Randomly select a percentage or specific number of objects from within the current selection. |
 
 # Scripts
 
@@ -12,7 +17,7 @@ This script can be used to randomize the layer order of all selected objects, wi
 
 ### Notable features:
 
-* Randomize layer order without relying on `ZOrderMethod` commands. This script works by swapping two layers in a randomized manner.
+* Randomize layer order without relying on `ZOrderMethod` commands that other layer order randomizer scripts use. Instead, this script works by swapping two layer positions in a randomized manner.
 * Optionally respect parent layers. With this option enabled, layers will stay within their own parent layers and will only be randomized relative to other selected layers in their same parent layer.
 
 ### How to use:
@@ -21,6 +26,8 @@ This script can be used to randomize the layer order of all selected objects, wi
 2. Open the script. This can be done in Illustrator's menu (File > Scripts > Other Script).
 3. Check whether or not you want parent layers to be respected.
 4. Click 'OK'
+
+<br>
 
 ## RandomSelection.jsx
 
@@ -35,13 +42,15 @@ This script can be used to randomly select a percentage or specific number of ob
 
 ### How to use:
 
-1. Select which selection mode you'd like to use. 
+1. Select which objects you want to randomize the selection of.
+2. Open the script. This can be done in Illustrator's menu (File > Scripts > Other Script).
+3. Select which selection mode you'd like to use. 
 	* The *'Percentage'* mode will randomly select a specified percentage of objects from the currently selected set of objects.
 	* The *'Count'* mode will randomly select an specified number of objects from the currently selected set of objects.
-2. Enter the value in the *'Value'* field.
+4. Enter the value in the *'Value'* field.
 	* For the percentage mode, this value should be between 0 and 100.
 	* For the count mode, this value should be between 1 and however many items are in the current selection.
-2. Click 'OK'
+5. Click 'OK'
 	* This will execute the script and randomly select a number of objects based on entered parameters.
 
 ### Notes:
