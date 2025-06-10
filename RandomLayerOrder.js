@@ -11,42 +11,37 @@ Feel free to modify this script as you see fit. I hope you find it useful.
 /**
  * PANEL UI
  */
-var mainPanelWindow = new Window(
-	"dialog",
-	"Random Order \u00A9 randomill.com",
-	undefined
-)
+var mainPanelWindow = new Window("dialog", "Random Layer Order \u00A9 randomill.com", undefined)
 mainPanelWindow.orientation = "column"
 mainPanelWindow.alignChildren = ["fill", "fill"]
-// Radios for selection method
+
+// radios for selection method
 var optionsGroup = mainPanelWindow.add("panel", undefined, "Options:")
 optionsGroup.orientation = "column"
 optionsGroup.alignChildren = ["fill", "fill"]
-var respectParentLayers = optionsGroup.add(
-	"checkbox",
-	undefined,
-	"Respect Parent Layers"
-)
+var respectParentLayers = optionsGroup.add("checkbox", undefined, "Respect Parent Layers")
 respectParentLayers.value = true
-var cancelAndOkButtons = mainPanelWindow.add("group")
-cancelAndOkButtons.alignChildren = ["fill", "fill"]
-cancelAndOkButtons.margins = [0, 0, 0, 0]
-var cancel = cancelAndOkButtons.add("button", undefined, "Cancel")
-cancel.helpTip = "Press Esc to Close"
-cancel.onClick = function () {
+
+// close and apply buttons
+var closeAndApplyButtons = mainPanelWindow.add("group")
+closeAndApplyButtons.alignChildren = ["fill", "fill"]
+closeAndApplyButtons.margins = [0, 0, 0, 0]
+var close = closeAndApplyButtons.add("button", undefined, "Close")
+close.helpTip = "Press Esc to Close"
+close.onClick = function () {
 	mainPanelWindow.close()
 }
-var ok = cancelAndOkButtons.add("button", undefined, "OK")
-ok.helpTip = "Press Enter to Run"
-ok.onClick = function () {
+var apply = closeAndApplyButtons.add("button", undefined, "Apply")
+apply.helpTip = "Press Enter to Run"
+apply.onClick = function () {
 	try {
 		randomizeLayerOrder()
+		app.redraw()
 	} catch (err) {
-		alert(err)
+		alert("Error: \n" + err.message)
 	}
-	mainPanelWindow.close()
 }
-ok.active = true
+apply.active = true
 
 /**
  * MAIN
@@ -79,9 +74,7 @@ function randomizeLayerOrder(objects) {
 function shuffleLayers(objects) {
 	var shuffled = shuffleArray(objects)
 	var loopLength =
-		objects.length % 2 === 0
-			? objects.length / 2
-			: Math.floor(objects.length / 2) + 1
+		objects.length % 2 === 0 ? objects.length / 2 : Math.floor(objects.length / 2) + 1
 	for (var i = 0; i < loopLength; i++) {
 		var a = shuffled[i * 2]
 		var b = shuffled[i * 2 + 1]

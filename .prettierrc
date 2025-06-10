@@ -6,6 +6,6 @@
 	"trailingComma": "none",
 	"bracketSpacing": true,
 	"arrowParens": "avoid",
-	"printWidth": 80,
+	"printWidth": 100,
 	"endOfLine": "lf"
 }

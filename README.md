@@ -2,17 +2,18 @@
 
 A collection of scripts for Adobe Illustrator. Free to use, modify, and redistribute. Hopefully more and more scripts will be added with time.
 
-| Script                                                    | Description                                                                                   |
-| :-------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| [RandomLayerOrder.js](#randomlayerorderjsx)               | Randomize the layer order of all selected objects                                             |
-| [RandomSelection.js](#randomselectionjsx)                 | Randomly select a percentage or specific number of objects from within the current selection. |
-| [RandomColorFromSwatches.js](#randomcolorfromswatchesjsx) | Randomly apply fill colors to selected objects from swatches selected in the swatches panel.  |
+| Script                                                   | Description                                                                                   |
+| :------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| [RandomLayerOrder.js](#randomlayerorderjs)               | Randomize the layer order of all selected objects                                             |
+| [RandomSelection.js](#randomselectionjs)                 | Randomly select a percentage or specific number of objects from within the current selection. |
+| [RandomColorFromSwatches.js](#randomcolorfromswatchesjs) | Randomly apply fill colors to selected objects from swatches selected in the swatches panel.  |
+| [RandomColorFromRange.js](#randomcolorfromrangejs)       | Randomly apply fill colors to selected objects from swatches selected in the swatches panel.  |
 
 # Scripts
 
 ## RandomLayerOrder.js
 
-![](images/RandomLayerOrder.png)
+![](images/random-layer-order.png)
 
 This script can be used to randomize the layer order of all selected objects, with or without respect to parent layers.
 
@@ -32,7 +33,7 @@ This script can be used to randomize the layer order of all selected objects, wi
 
 ## RandomSelection.js
 
-![](images/RandomSelection.png)
+![](images/random-selection.png)
 
 This script can be used to randomly select a percentage or specific number of objects from within the current selection. There have been many random selection scripts for Adobe Illustrator before, but this one has a couple of features that some others are missing.
 
@@ -61,7 +62,7 @@ This script can be used to randomly select a percentage or specific number of ob
 
 ## RandomColorFromSwatches.js
 
-![](images/RandomColorFromSwatches.png)
+![](images/random-color-from-swatches.png)
 
 ### Notable features:
 
@@ -74,3 +75,18 @@ This script can be used to randomly select a percentage or specific number of ob
 3. Open the script. This can be done in Illustrator's menu (File > Scripts > Other Script).
 4. Choose script options.
 5. Click 'OK'.
+
+## RandomColorFromRange.js
+
+![](images/random-color-from-range.png)
+
+### Notable features:
+
+- Randomize fill and/or stroke colors from configurable ranges.
+
+### How to use:
+
+1. Select your objects in Illustrator.
+2. Open the script. This can be done in Illustrator's menu (File > Scripts > Other Script).
+3. Choose script options.
+4. Click 'Apply'.

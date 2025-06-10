@@ -28,55 +28,42 @@ Feel free to modify this script as you see fit. I hope you find it useful.
 /**
  * PANEL UI
  */
-var mainPanelWindow = new Window(
-	"dialog",
-	"Random Selection \u00A9 randomill.com",
-	undefined
-)
+var mainPanelWindow = new Window("dialog", "Random Selection \u00A9 randomill.com", undefined)
 mainPanelWindow.orientation = "column"
 mainPanelWindow.alignChildren = ["fill", "fill"]
-// Radios for selection method
-var selectionMethodSelect = mainPanelWindow.add(
-	"panel",
-	undefined,
-	"Selection Method:"
-)
+
+// radios for selection method
+var selectionMethodSelect = mainPanelWindow.add("panel", undefined, "Selection Method:")
 selectionMethodSelect.orientation = "column"
 selectionMethodSelect.alignChildren = ["fill", "fill"]
-var selMethodPercentageRadio = selectionMethodSelect.add(
-	"radiobutton",
-	undefined,
-	"Percentage"
-)
-var selMethodCountRadio = selectionMethodSelect.add(
-	"radiobutton",
-	undefined,
-	"Count"
-)
-selMethodPercentageRadio.value = true // percentage method is selected by default
-// Text field for entering desired value
+var selMethodPercentageRadio = selectionMethodSelect.add("radiobutton", undefined, "Percentage")
+var selMethodCountRadio = selectionMethodSelect.add("radiobutton", undefined, "Count")
+selMethodPercentageRadio.value = true
+
+// text field for entering desired value
 var valueInputTextField = mainPanelWindow.add("panel", undefined, "Value:")
 valueInputTextField.orientation = "row"
 valueInputTextField.alignChildren = ["fill", "fill"]
 var selectionValue = valueInputTextField.add("edittext", undefined, 50)
-// selectionValue.minimumSize = [1, undefined];
-// selectionValue.active = true;
-// OK and Cancel Buttons
-var cancelAndOkButtons = mainPanelWindow.add("group")
-cancelAndOkButtons.alignChildren = ["fill", "fill"]
-cancelAndOkButtons.margins = [0, 0, 0, 0]
-var cancel = cancelAndOkButtons.add("button", undefined, "Cancel")
-cancel.helpTip = "Press Esc to Close"
-cancel.onClick = function () {
+
+// close and apply buttons
+var closeAndApplyButtons = mainPanelWindow.add("group")
+closeAndApplyButtons.alignChildren = ["fill", "fill"]
+closeAndApplyButtons.margins = [0, 0, 0, 0]
+var close = closeAndApplyButtons.add("button", undefined, "Close")
+close.onClick = function () {
 	mainPanelWindow.close()
 }
-var ok = cancelAndOkButtons.add("button", undefined, "OK")
-ok.helpTip = "Press Enter to Run"
-ok.onClick = function () {
-	randomizeSelection()
-	mainPanelWindow.close()
+var apply = closeAndApplyButtons.add("button", undefined, "Apply")
+apply.onClick = function () {
+	try {
+		randomizeSelection()
+		app.redraw()
+	} catch (err) {
+		alert("Error: \n" + err.message)
+	}
 }
-ok.active = true
+apply.active = true
 
 /**
  * MAIN
@@ -129,10 +116,7 @@ function randomizeSelection() {
 
 	// Determine whether the most efficient way is to select objects starting from an empty array,
 	// or to deslect objects from the currently selected object array
-	var whatToDo = selectOrDeselect(
-		objects.length,
-		numberOfObjectsInFinalSelection
-	)
+	var whatToDo = selectOrDeselect(objects.length, numberOfObjectsInFinalSelection)
 	var deselect = whatToDo.deselect
 
 	// How many objects must be either selected or deselected?
@@ -158,15 +142,9 @@ function randomizeSelection() {
 /**
  * HELPERS
  */
-function calculateNumberOfObjectsToSelect(
-	selectionLength,
-	selectionMethod,
-	value
-) {
+function calculateNumberOfObjectsToSelect(selectionLength, selectionMethod, value) {
 	var numberOfObjectsToSelect =
-		selectionMethod === "percentage"
-			? Math.round((selectionLength * value) / 100)
-			: value
+		selectionMethod === "percentage" ? Math.round((selectionLength * value) / 100) : value
 
 	$.writeln("	Number of objects to select: " + numberOfObjectsToSelect)
 
