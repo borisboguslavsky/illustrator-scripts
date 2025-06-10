@@ -13,7 +13,7 @@ Feel free to modify this script as you see fit. I hope you find it useful.
  */
 var mainPanelWindow = new Window(
 	"dialog",
-	"Random Color \u00A9 randomill.com",
+	"Random Color (Swatches) \u00A9 randomill.com",
 	undefined
 )
 mainPanelWindow.orientation = "column"
@@ -23,41 +23,29 @@ mainPanelWindow.alignChildren = ["fill", "fill"]
 var fillMethodSelect = mainPanelWindow.add("panel", undefined, "Apply to:")
 fillMethodSelect.orientation = "column"
 fillMethodSelect.alignChildren = ["fill", "fill"]
-var fillMethodFillsOnly = fillMethodSelect.add(
-	"radiobutton",
-	undefined,
-	"Fills"
-)
-var fillMethodStrokesOnly = fillMethodSelect.add(
-	"radiobutton",
-	undefined,
-	"Stroke"
-)
+var fillMethodFillsOnly = fillMethodSelect.add("radiobutton", undefined, "Fills")
+var fillMethodStrokesOnly = fillMethodSelect.add("radiobutton", undefined, "Stroke")
 fillMethodFillsOnly.value = true
 
 // checkboxes for options
 var optionsGroup = mainPanelWindow.add("panel", undefined, "Options:")
 optionsGroup.orientation = "column"
 optionsGroup.alignChildren = ["fill", "fill"]
-var randomizeWithinGroups = optionsGroup.add(
-	"checkbox",
-	undefined,
-	"Randomize Within Groups"
-)
+var randomizeWithinGroups = optionsGroup.add("checkbox", undefined, "Randomize Within Groups")
 randomizeWithinGroups.value = true
 
-// ok and Cancel Buttons
-var cancelAndOkButtons = mainPanelWindow.add("group")
-cancelAndOkButtons.alignChildren = ["fill", "fill"]
-cancelAndOkButtons.margins = [0, 0, 0, 0]
-var cancel = cancelAndOkButtons.add("button", undefined, "Cancel")
-cancel.helpTip = "Press Esc to Close"
-cancel.onClick = function () {
+// close and apply buttons
+var closeAndApplyButtons = mainPanelWindow.add("group")
+closeAndApplyButtons.alignChildren = ["fill", "fill"]
+closeAndApplyButtons.margins = [0, 0, 0, 0]
+var close = closeAndApplyButtons.add("button", undefined, "Close")
+close.helpTip = "Press Esc to Close"
+close.onClick = function () {
 	mainPanelWindow.close()
 }
-var ok = cancelAndOkButtons.add("button", undefined, "OK")
-ok.helpTip = "Press Enter to Run"
-ok.onClick = function () {
+var apply = closeAndApplyButtons.add("button", undefined, "Apply")
+apply.helpTip = "Press Enter to Run"
+apply.onClick = function () {
 	try {
 		randomizeColorsFromSwatch()
 	} catch (err) {
@@ -65,7 +53,7 @@ ok.onClick = function () {
 	}
 	mainPanelWindow.close()
 }
-ok.active = true
+apply.active = true
 
 /**
  * MAIN
@@ -89,16 +77,13 @@ function randomizeColorsFromSwatch() {
 	var swatches = app.activeDocument.swatches.getSelected()
 
 	if (!swatches || swatches.length === 0) {
-		alert(
-			"Error: No currently selected swatches. Select objects first, then select swatches."
-		)
+		alert("Error: No currently selected swatches. Select objects first, then select swatches.")
 		mainPanelWindow.close()
 		return
 	}
 
 	// establish the fill method
-	var fillOrStroke =
-		fillMethodFillsOnly.value === true ? "fillColor" : "strokeColor"
+	var fillOrStroke = fillMethodFillsOnly.value === true ? "fillColor" : "strokeColor"
 
 	// flag to display alert if some objects are unable to be processed
 	var someObjectsNotPathItems = false
@@ -118,12 +103,7 @@ function randomizeColorsFromSwatch() {
 			continue
 		}
 
-		setColorProperty(
-			item,
-			swatches,
-			randomizeWithinGroups.value === true,
-			fillOrStroke
-		)
+		setColorProperty(item, swatches, randomizeWithinGroups.value === true, fillOrStroke)
 	}
 
 	if (someObjectsNotPathItems) {
@@ -165,12 +145,7 @@ function setColorProperty(item, swatches, separateGroups, fillOrStroke) {
 		for (var i = 0; i < groupItemTypes.length; i++) {
 			if (item[groupItemTypes[i]].length > 0) {
 				for (var j = 0; j < item[groupItemTypes[i]].length; j++) {
-					setColorProperty(
-						item[groupItemTypes[i]][j],
-						newSwatches,
-						separateGroups,
-						fillOrStroke
-					)
+					setColorProperty(item[groupItemTypes[i]][j], newSwatches, separateGroups, fillOrStroke)
 				}
 			}
 		}
