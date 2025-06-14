@@ -1,33 +1,26 @@
-# Overview
+| Script                                                   | Description                                                                                     |
+| :------------------------------------------------------- | :---------------------------------------------------------------------------------------------- |
+| [RandomLayerOrder.js](#randomlayerorderjs)               | Randomize the layer order of all selected objects                                               |
+| [RandomSelection.js](#randomselectionjs)                 | Randomly select a percentage or specific number of objects from within the current selection.   |
+| [RandomColorFromSwatches.js](#randomcolorfromswatchesjs) | Randomly apply fill or colors to selected objects from swatches selected in the swatches panel. |
+| [RandomColorFromRange.js](#randomcolorfromrangejs)       | Randomly apply fill or stroke colors to selected objects from configurable HSL/RGB/CMYK ranges. |
 
-A collection of scripts for Adobe Illustrator. Free to use, modify, and redistribute. Hopefully more and more scripts will be added with time.
+## How to run scripts in Illustrator
 
-| Script                                                   | Description                                                                                   |
-| :------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| [RandomLayerOrder.js](#randomlayerorderjs)               | Randomize the layer order of all selected objects                                             |
-| [RandomSelection.js](#randomselectionjs)                 | Randomly select a percentage or specific number of objects from within the current selection. |
-| [RandomColorFromSwatches.js](#randomcolorfromswatchesjs) | Randomly apply fill colors to selected objects from swatches selected in the swatches panel.  |
-| [RandomColorFromRange.js](#randomcolorfromrangejs)       | Randomly apply fill colors to selected objects from swatches selected in the swatches panel.  |
-
-# Scripts
+1. **Prep selection/document.** Depending on the script, you may want to select items the script should affect, or otherwise get the document ready for the script to run.
+2. **Open the script.** This can be done in Illustrator's menu **(File > Scripts > Other Script)**.
+3. **Configure options.** If the script has a UI, you can dial in some options.
+4. **Execute thes script.** If there's no UI, this will happen automatically, otherwise there will be something like an 'OK' or 'Apply' button.
 
 ## RandomLayerOrder.js
 
 ![](images/random-layer-order.png)
 
-This script can be used to randomize the layer order of all selected objects, with or without respect to parent layers.
+This script can be used to randomize the layer order of all selected objects, with or without respect to parent layers. A unique aspect of this script is that it works without relying on `ZOrderMethod` commands that other layer order randomizer scripts use. Instead, this script works by swapping two layer positions in a randomized manner.
 
-### Notable features:
+This script also supports respecting parent layers and overall layer hierarchy. With this option enabled, layers will stay within their own parent layers and will only be randomized relative to other selected layers in their same parent layer.
 
-- Randomize layer order without relying on `ZOrderMethod` commands that other layer order randomizer scripts use. Instead, this script works by swapping two layer positions in a randomized manner.
-- Optionally respect parent layers. With this option enabled, layers will stay within their own parent layers and will only be randomized relative to other selected layers in their same parent layer.
-
-### How to use:
-
-1. Select all objects whose layer order you want to randomize.
-2. Open the script. This can be done in Illustrator's menu (File > Scripts > Other Script).
-3. Check whether or not you want parent layers to be respected.
-4. Click 'OK'
+**Need more features? Check out [Randomill](https://randomill.com/).** Randomill allows for reversing and arranging layer order by object position on the artboard. Objects can be sorted in the layer stack by their X,Y coordinates on the artboard, and can even optionally account for stroke widths in object bound calculation for more accurate ordering.
 
 <br>
 
@@ -37,56 +30,22 @@ This script can be used to randomize the layer order of all selected objects, wi
 
 This script can be used to randomly select a percentage or specific number of objects from within the current selection. There have been many random selection scripts for Adobe Illustrator before, but this one has a couple of features that some others are missing.
 
-### Notable features:
+The selection algorithm is optimized so that it will select or deselect based on how many operations have to be completed. For example, if you're selecting 4 random objects from a set of 1000, it will deselect everything, and then randomly select 4 objects. Conversely, if you're selecting 996 objects out of 1000, it will not deselect everything first. It will just deselect 4 random objects.
 
-- Select by percentage or by exact number of objects.
-- The selection algorithm is optimized so that it will select or deselect based on how many operations have to be completed. For example, if you're selecting 4 random objects from a set of 1000, it will deselect everything, and then randomly select 4 objects. Conversely, if you're selecting 996 objects out of 1000, it will not deselect everything first. It will just deselect 4 random objects.
-
-### How to use:
-
-1. Select which objects you want to randomize the selection of.
-2. Open the script. This can be done in Illustrator's menu (File > Scripts > Other Script).
-3. Select which selection mode you'd like to use.
-   - The _'Percentage'_ mode will randomly select a specified percentage of objects from the currently selected set of objects.
-   - The _'Count'_ mode will randomly select an specified number of objects from the currently selected set of objects.
-4. Enter the value in the _'Value'_ field.
-   - For the percentage mode, this value should be between 0 and 100.
-   - For the count mode, this value should be between 1 and however many items are in the current selection.
-5. Click 'OK'
-   - This will execute the script and randomly select a number of objects based on entered parameters.
-
-### Notes:
-
-- It may take some time to run the script on large sets of objects. This is because of the fact that the core of this script works by flipping the `.selected` flag of objects within Illustrator via ExtendScript. This necessarily means that Illustrator redraws the whole screen every time a single object has its `.selected` flag modified. It's an unfortunate limitation of how Adobe has implemented this particular feature within ExtendScript.
-- This script is a stripped-down version of [Randomill's](https://randomill.com/) random select function. The main difference between the two is that the full version of this function within [Randomill](https://randomill.com/) has an 'experimental' fast-select mode that circumvents the above speed limitation by creating an executing an action dynamically instead of iterating over objects and flipping their `.selected` flags. This means that random selection can happen almost instantaneously, regardless of how large the initial set of objects is.
+**Need more features? Check out [Randomill](https://randomill.com/).** Randomill's random select function is about 100x faster than this script. It has an optimized fast-select mode that circumvents ExtendScript's speed limitation by creating an executing an action dynamically instead of iterating over objects and flipping their `.selected` flags like this script does. This means that random selection can happen almost instantaneously, regardless of how large the initial set of objects is. There are also several other selection features included in Randomill like selecting by position in layer stack, selecting every Nth object, etc.
 
 ## RandomColorFromSwatches.js
 
 ![](images/random-color-from-swatches.png)
 
-### Notable features:
+Randomize fill and/or stroke colors from selected swatches in the swatches panel. Since the script relies on selected swatches, you can apply gradients, patterns, spot colors, and any other type of swatch to selected objects. Compatible objects are: PathItems, CompoundPathItems, GroupItems, and TextFrames.
 
-- Randomize fill and/or stroke colors from selected swatches in the swatches panel.
-
-### How to use:
-
-1. Select your objects in Illustrator. This **has** to be done first.
-2. Select the desired swatches in the swatches panel. This will change the colors of all selected objects.
-3. Open the script. This can be done in Illustrator's menu (File > Scripts > Other Script).
-4. Choose script options.
-5. Click 'OK'.
+**Need more features? Check out [Randomill](https://randomill.com/).** Swatches can be imported into Randomill's UI, and applied randomly to the selection without having to re-run the script or re-select swatches. Swatches can also be applied in a specific sequence to the select, and easily added/removed from the set. Randomill can also progressively shift color values, apply blends, offset colors, loop through colors, and more.
 
 ## RandomColorFromRange.js
 
 ![](images/random-color-from-range.png)
 
-### Notable features:
+Randomize fill and/or stroke colors from configurable ranges. Colors can be applied as RGB, CMYK, or HSL colors. Minimum and maximum values can be set to constrain ranges of each individual variable. Compatible objects are: PathItems, CompoundPathItems, GroupItems, and TextFrames.
 
-- Randomize fill and/or stroke colors from configurable ranges.
-
-### How to use:
-
-1. Select your objects in Illustrator.
-2. Open the script. This can be done in Illustrator's menu (File > Scripts > Other Script).
-3. Choose script options.
-4. Click 'Apply'.
+**Need more features? Check out [Randomill](https://randomill.com/).** Randomill's color range functions feature interactive sliders to configure ranges, and can invert the HUE min/max ranges to allow for greater flexibiity. Strokes and fills can be applied independently and repeatedly without having to re-dial ranges, or re-select swatches.
