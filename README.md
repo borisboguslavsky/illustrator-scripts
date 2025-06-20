@@ -4,6 +4,7 @@
 | [RandomSelection.js](#randomselectionjs)                 | Randomly select a percentage or specific number of objects from within the current selection.   |
 | [RandomColorFromSwatches.js](#randomcolorfromswatchesjs) | Randomly apply fill or colors to selected objects from swatches selected in the swatches panel. |
 | [RandomColorFromRange.js](#randomcolorfromrangejs)       | Randomly apply fill or stroke colors to selected objects from configurable HSL/RGB/CMYK ranges. |
+| [RandomScale.js](#randomscalejs)                         | Randomly scale objects uniformly, or independently along X,Y axes.                              |
 
 ## How to run scripts in Illustrator
 
@@ -49,3 +50,11 @@ Randomize fill and/or stroke colors from selected swatches in the swatches panel
 Randomize fill and/or stroke colors from configurable ranges. Colors can be applied as RGB, CMYK, or HSL colors. Minimum and maximum values can be set to constrain ranges of each individual variable. Compatible objects are: PathItems, CompoundPathItems, GroupItems, and TextFrames.
 
 **Need more features? Check out [Randomill](https://randomill.com/).** Randomill's color range functions feature interactive sliders to configure ranges, and can invert the HUE min/max ranges to allow for greater flexibiity. Strokes and fills can be applied independently and repeatedly without having to re-dial ranges, or re-select swatches.
+
+## RandomScale.js
+
+![](images/random-scale.png)
+
+Randomize scale from a min/max range and a configurable step size. Objects can be scaled uniformly or independently,
+
+**Need more features? Check out [Randomill](https://randomill.com/).** Randomill's random scale function features options to randomize the anchor point around which objects are scaled, allows users to independently scale fill/stroke patterns or widths, and scale text per character, per word, etc. There are also 3 additional scale modification functions apart from randomization.
