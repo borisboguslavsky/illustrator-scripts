@@ -5,7 +5,8 @@
 | [RandomColorFromSwatches.js](#randomcolorfromswatchesjs) | Randomly apply fill or colors to selected objects from swatches selected in the swatches panel. |
 | [RandomColorFromRange.js](#randomcolorfromrangejs)       | Randomly apply fill or stroke colors to selected objects from configurable HSL/RGB/CMYK ranges. |
 | [RandomScale.js](#randomscalejs)                         | Randomly scale objects uniformly, or independently along X,Y axes.                              |
-| [RandomOpacity.js](#randomscalejs)                       | Randomize opacity from a min/max range and a configurable step size.                            |
+| [RandomOpacity.js](#randomopacityjs)                     | Randomize opacity from a min/max range and a configurable step size.                            |
+| [RandomPosition.js](#randompositionjs)                   | Offset position by a random value from a min/max range and a configurable step size.            |
 
 ## How to run scripts in Illustrator
 
@@ -67,3 +68,11 @@ Randomize scale from a min/max range and a configurable step size. Objects can b
 Randomize opacity from a min/max range and a configurable step size.
 
 **Need more features? Check out [Randomill](https://randomill.com/).** Randomill's random opacity function goes beyond just randomization, allowing users to offset opacity while iterating through objects, approach a target opacity incrementally, or oscillate opacity between two values.
+
+## RandomPosition.js
+
+![](images/random-position.png)
+
+Offset position by a random value from a min/max range and a configurable step size. Randomize X and Y position offsets independently.
+
+**Need more features? Check out [Randomill](https://randomill.com/).** Randomill's random position function allows for positioning of objects, fill patterns, and stroke patterns independently, as well as 3 other position algorithms apart from randomization.
