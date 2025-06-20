@@ -5,6 +5,7 @@
 | [RandomColorFromSwatches.js](#randomcolorfromswatchesjs) | Randomly apply fill or colors to selected objects from swatches selected in the swatches panel. |
 | [RandomColorFromRange.js](#randomcolorfromrangejs)       | Randomly apply fill or stroke colors to selected objects from configurable HSL/RGB/CMYK ranges. |
 | [RandomScale.js](#randomscalejs)                         | Randomly scale objects uniformly, or independently along X,Y axes.                              |
+| [RandomOpacity.js](#randomscalejs)                       | Randomize opacity from a min/max range and a configurable step size.                            |
 
 ## How to run scripts in Illustrator
 
@@ -58,3 +59,11 @@ Randomize fill and/or stroke colors from configurable ranges. Colors can be appl
 Randomize scale from a min/max range and a configurable step size. Objects can be scaled uniformly or independently,
 
 **Need more features? Check out [Randomill](https://randomill.com/).** Randomill's random scale function features options to randomize the anchor point around which objects are scaled, allows users to independently scale fill/stroke patterns or widths, and scale text per character, per word, etc. There are also 3 additional scale modification functions apart from randomization.
+
+## RandomOpacity.js
+
+![](images/random-opacity.png)
+
+Randomize opacity from a min/max range and a configurable step size.
+
+**Need more features? Check out [Randomill](https://randomill.com/).** Randomill's random opacity function goes beyond just randomization, allowing users to offset opacity while iterating through objects, approach a target opacity incrementally, or oscillate opacity between two values.
