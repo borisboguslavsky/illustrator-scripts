@@ -7,6 +7,7 @@
 | [RandomScale.js](#randomscalejs)                         | Randomly scale objects uniformly, or independently along X,Y axes.                              |
 | [RandomOpacity.js](#randomopacityjs)                     | Randomize opacity from a min/max range and a configurable step size.                            |
 | [RandomPosition.js](#randompositionjs)                   | Offset position by a random value from a min/max range and a configurable step size.            |
+| [RandomRotation.js](#randomrotationjs)                   | Randomly rotate objects be a random value from a min/max range and a configurable step size.    |
 
 ## How to run scripts in Illustrator
 
@@ -76,3 +77,11 @@ Randomize opacity from a min/max range and a configurable step size.
 Offset position by a random value from a min/max range and a configurable step size. Randomize X and Y position offsets independently.
 
 **Need more features? Check out [Randomill](https://randomill.com/).** Randomill's random position function allows for positioning of objects, fill patterns, and stroke patterns independently, as well as 3 other position algorithms apart from randomization.
+
+## RandomRotation.js
+
+![](images/random-rotation.png)
+
+Randomly rotate objects be a random value from a min/max range and a configurable step size. Objects inside groups can be configured to be randomly rotated as a group, or to have each object in the group rotated separately. The same option is available for compound paths.
+
+**Need more features? Check out [Randomill](https://randomill.com/).** Randomill's random rotation function allows for random rotation of objects, fill patterns, and stroke patterns independently, as well as 3 other position algorithms apart from randomization.
