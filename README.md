@@ -1,3 +1,7 @@
+A collection of free illustrator scripts focused on randomization.
+
+## Script summary
+
 | Script                                                   | Description                                                                                     |
 | :------------------------------------------------------- | :---------------------------------------------------------------------------------------------- |
 | [RandomLayerOrder.js](#randomlayerorderjs)               | Randomize the layer order of all selected objects                                               |
@@ -8,6 +12,23 @@
 | [RandomOpacity.js](#randomopacityjs)                     | Randomize opacity from a min/max range and a configurable step size.                            |
 | [RandomPosition.js](#randompositionjs)                   | Offset position by a random value from a min/max range and a configurable step size.            |
 | [RandomRotation.js](#randomrotationjs)                   | Randomly rotate objects be a random value from a min/max range and a configurable step size.    |
+
+## Need more features? Check out [Randomill](https://randomill.com/)
+
+Randomill encapsulates all of the below scripts into a beautiful UI that looks like a native illustrator panel. All of the improved functions can be run simultaneously, or individually without having to close the panel or run additional scripts.
+
+Per-function table of what Randomill offers over these individual scripts:
+
+| Script                     | Randomill Upgrade                                                                                                                                   |
+| :------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| RandomLayerOrder.js        | In addition to randomizing, Randomill can reverse layer order, and sort layer order of objects by their positions on the artboard.                  |
+| RandomSelection.js         | Uses much faster select method, allowing for thousands of objects. Also features "Every Nth" selection mode, and "Stack" selection mode.            |
+| RandomColorFromSwatches.js | Add, remove, and re-arrange swatches in the panel UI, 3 additional color algorithms: "offset/shift", "loop", and "blend".                           |
+| RandomColorFromRange.js    | Randomill features interactive color sliders with preview, 3 more color algorithms, and way more options.                                           |
+| RandomScale.js             | Randomill allows for scaling of object properties independently, adjusting scale anchor, text scaling options, and 3 additional scaling algorithms. |
+| RandomOpacity.js           | Three additional opacity algorithms other than randomization (offset/shift, target, oscillate).                                                     |
+| RandomPosition.js          | Reposition object properties independently, 3 additional position algorithms.                                                                       |
+| RandomRotation.js          | Rotate object properties independently, choose transformation anchor, 3 additional rotation algorithms.                                             |
 
 ## How to run scripts in Illustrator
 
@@ -24,8 +45,6 @@ This script can be used to randomize the layer order of all selected objects, wi
 
 This script also supports respecting parent layers and overall layer hierarchy. With this option enabled, layers will stay within their own parent layers and will only be randomized relative to other selected layers in their same parent layer.
 
-**Need more features? Check out [Randomill](https://randomill.com/).** Randomill allows for reversing and arranging layer order by object position on the artboard. Objects can be sorted in the layer stack by their X,Y coordinates on the artboard, and can even optionally account for stroke widths in object bound calculation for more accurate ordering.
-
 <br>
 
 ## RandomSelection.js
@@ -36,15 +55,11 @@ This script can be used to randomly select a percentage or specific number of ob
 
 The selection algorithm is optimized so that it will select or deselect based on how many operations have to be completed. For example, if you're selecting 4 random objects from a set of 1000, it will deselect everything, and then randomly select 4 objects. Conversely, if you're selecting 996 objects out of 1000, it will not deselect everything first. It will just deselect 4 random objects.
 
-**Need more features? Check out [Randomill](https://randomill.com/).** Randomill's random select function is about 100x faster than this script. It has an optimized fast-select mode that circumvents ExtendScript's speed limitation by creating an executing an action dynamically instead of iterating over objects and flipping their `.selected` flags like this script does. This means that random selection can happen almost instantaneously, regardless of how large the initial set of objects is. There are also several other selection features included in Randomill like selecting by position in layer stack, selecting every Nth object, etc.
-
 ## RandomColorFromSwatches.js
 
 ![](images/random-color-from-swatches.png)
 
 Randomize fill and/or stroke colors from selected swatches in the swatches panel. Since the script relies on selected swatches, you can apply gradients, patterns, spot colors, and any other type of swatch to selected objects. Compatible objects are: PathItems, CompoundPathItems, GroupItems, and TextFrames.
-
-**Need more features? Check out [Randomill](https://randomill.com/).** Swatches can be imported into Randomill's UI, and applied randomly to the selection without having to re-run the script or re-select swatches. Swatches can also be applied in a specific sequence to the select, and easily added/removed from the set. Randomill can also progressively shift color values, apply blends, offset colors, loop through colors, and more.
 
 ## RandomColorFromRange.js
 
@@ -52,15 +67,11 @@ Randomize fill and/or stroke colors from selected swatches in the swatches panel
 
 Randomize fill and/or stroke colors from configurable ranges. Colors can be applied as RGB, CMYK, or HSL colors. Minimum and maximum values can be set to constrain ranges of each individual variable. Compatible objects are: PathItems, CompoundPathItems, GroupItems, and TextFrames.
 
-**Need more features? Check out [Randomill](https://randomill.com/).** Randomill's color range functions feature interactive sliders to configure ranges, and can invert the HUE min/max ranges to allow for greater flexibiity. Strokes and fills can be applied independently and repeatedly without having to re-dial ranges, or re-select swatches.
-
 ## RandomScale.js
 
 ![](images/random-scale.png)
 
 Randomize scale from a min/max range and a configurable step size. Objects can be scaled uniformly or independently,
-
-**Need more features? Check out [Randomill](https://randomill.com/).** Randomill's random scale function features options to randomize the anchor point around which objects are scaled, allows users to independently scale fill/stroke patterns or widths, and scale text per character, per word, etc. There are also 3 additional scale modification functions apart from randomization.
 
 ## RandomOpacity.js
 
@@ -68,20 +79,14 @@ Randomize scale from a min/max range and a configurable step size. Objects can b
 
 Randomize opacity from a min/max range and a configurable step size.
 
-**Need more features? Check out [Randomill](https://randomill.com/).** Randomill's random opacity function goes beyond just randomization, allowing users to offset opacity while iterating through objects, approach a target opacity incrementally, or oscillate opacity between two values.
-
 ## RandomPosition.js
 
 ![](images/random-position.png)
 
 Offset position by a random value from a min/max range and a configurable step size. Randomize X and Y position offsets independently.
 
-**Need more features? Check out [Randomill](https://randomill.com/).** Randomill's random position function allows for positioning of objects, fill patterns, and stroke patterns independently, as well as 3 other position algorithms apart from randomization.
-
 ## RandomRotation.js
 
 ![](images/random-rotation.png)
 
 Randomly rotate objects be a random value from a min/max range and a configurable step size. Objects inside groups can be configured to be randomly rotated as a group, or to have each object in the group rotated separately. The same option is available for compound paths.
-
-**Need more features? Check out [Randomill](https://randomill.com/).** Randomill's random rotation function allows for random rotation of objects, fill patterns, and stroke patterns independently, as well as 3 other position algorithms apart from randomization.
