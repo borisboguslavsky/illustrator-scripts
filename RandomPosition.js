@@ -10,7 +10,7 @@
 
 // dialog window
 var dialog = new Window("dialog")
-dialog.text = "Random Opacity - randomill.com"
+dialog.text = "Random Position - randomill.com"
 dialog.orientation = "column"
 dialog.alignChildren = ["fill", "top"]
 dialog.spacing = 10
